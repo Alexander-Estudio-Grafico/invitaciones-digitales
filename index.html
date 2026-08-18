@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitaciones Digitales - Alexander Estudio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #0a1f44, #0d3c7a); /* Azul más oscuro y profundo */
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    header img {
+      width: 150px; /* Logo más grande */
+      margin-bottom: 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    /* Galería */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding: 20px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .lightbox img {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Precios */
+    .prices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 25px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border-top: 5px solid #0d3c7a; /* Detalle premium */
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      color: #0d3c7a;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 1em;
+      margin: 10px 0;
+    }
+    .price {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #6a11cb;
+    }
+
+    /* Botón flotante WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+      z-index: 1000;
+    }
+    .whatsapp-float:hover {
+      background: #1ebe5d;
+    }
+
+    footer {
+      background: #0a1f44;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Logo.png" alt="Logo Alexander Estudio">
+    <h1>Alexander Estudio de Diseño Gráfico</h1>
+    <p>Invitaciones Digitales Personalizadas</p>
+  </header>
+
+  <div class="container">
+    <!-- Galería -->
+    <section class="gallery">
+      <img src="1.png" alt="Invitación 1" onclick="openLightbox(this.src)">
+      <img src="2.png" alt="Invitación 2" onclick="openLightbox(this.src)">
+      <img src="3.png" alt="Invitación 3" onclick="openLightbox(this.src)">
+      <img src="4.png" alt="Invitación 4" onclick="openLightbox(this.src)">
+      <img src="5.png" alt="Invitación 5" onclick="openLightbox(this.src)">
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="close" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="">
+    </div>
+
+    <!-- Precios -->
+    <section class="prices">
+      <div class="card">
+        <h3>📷 Invitaciones en Imagen</h3>
+        <p>Diseños personalizados en formato estático, ideales para compartir en redes sociales o imprimir.</p>
+        <p class="price">$45 MXN</p>
+      </div>
+      <div class="card">
+        <h3>🔘 Invitaciones Interactivas</h3>
+        <p>Invitaciones digitales con botones y enlaces, perfectas para confirmar asistencia o compartir ubicación.</p>
+        <p class="price">$65 MXN</p>
+      </div>
+      <div class="card">
+        <h3>🎥 Invitaciones en Video</h3>
+        <p>Animaciones únicas y creativas que harán tu evento inolvidable, listas para enviar por WhatsApp.</p>
+        <p class="price">$120 MXN</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Botón flotante WhatsApp -->
+  <a class="whatsapp-float" href="https://wa.me/529861040260" target="_blank">
+    💬 Más información
+  </a>
+
+  <footer>
+    <p>&copy; 2026 Alexander Estudio de Diseño Gráfico | Pagos mediante transferencia bancaria</p>
+  </footer>
+
+  <!-- JavaScript para Lightbox -->
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox").style.display = "block";
+      document.getElementById("lightbox-img").src = src;
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+</body>
+</html>
+
